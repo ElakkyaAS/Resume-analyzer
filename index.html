@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Analyzer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="logo">📄 Resume<span class="grad">Analyzer</span></div>
+      <nav>
+        <a href="#analyze">Analyze</a>
+        <a href="#how">How it works</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <p class="badge">100% client-side · nothing leaves your browser</p>
+        <h1>Score your resume <span class="grad">in seconds</span></h1>
+        <p class="sub">
+          Upload a PDF and instantly see which skills show up — and which ones are missing.
+        </p>
+        <a href="#analyze" class="btn">Upload your resume</a>
+      </div>
+    </section>
+
+    <!-- Upload -->
+    <section id="analyze" class="upload-section">
+      <div class="container">
+        <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="Upload a PDF resume">
+          <input type="file" id="file-input" accept="application/pdf" hidden />
+          <p class="dz-icon">📄</p>
+          <p class="dz-title">Drag &amp; drop your resume here</p>
+          <p class="dz-sub">or <span class="dz-browse">browse files</span> — PDF only</p>
+        </div>
+
+        <p class="picked" id="picked" hidden></p>
+        <p class="error" id="error" hidden></p>
+
+        <button class="btn" id="analyze-btn" hidden>Analyze resume</button>
+      </div>
+    </section>
+
+    <!-- Result -->
+    <section id="result" class="result" hidden>
+      <div class="container">
+        <div class="result-grid">
+          <div class="score-card">
+            <div class="ring-wrap">
+              <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+                <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+                <circle class="ring-fg" id="ring-fg" cx="60" cy="60" r="52"></circle>
+              </svg>
+              <div class="score-num">
+                <span id="score-num">0</span><span class="pct">%</span>
+              </div>
+            </div>
+            <p class="score-label">Resume score</p>
+            <p class="score-note" id="score-note"></p>
+          </div>
+
+          <div class="skills-card">
+            <h2>Skills found <span class="count" id="present-count"></span></h2>
+            <div class="chips" id="present-chips"></div>
+
+            <h2>Skills missing <span class="count" id="missing-count"></span></h2>
+            <div class="chips" id="missing-chips"></div>
+
+            <button class="btn ghost" id="reset-btn">↺ Analyze another resume</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="how">
+      <div class="container">
+        <h2 class="how-title">How it works</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="num">1</div>
+            <h3>Upload a PDF</h3>
+            <p>Drop in your resume. It never leaves the page — parsing happens in your browser.</p>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <h3>We scan for skills</h3>
+            <p>The extracted text is matched against a list of common tech skills recruiters look for.</p>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <h3>Get your score</h3>
+            <p>See what's present, what's missing, and where to level up before you apply.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Resume Analyzer — a mock built with HTML, CSS &amp; JavaScript. Keyword-based scoring, runs entirely client-side.</p>
+  </footer>
+
+  <!-- pdf.js reads the PDF in the browser (loaded from a CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
