@@ -45,7 +45,7 @@ export default function App() {
       setResult(await res.json());
     } catch (err) {
       console.error(err);
-      setError("Couldn't analyze — is the backend running on port 5000?");
+      setError("Couldn't analyze — try again in a moment.");
     } finally {
       setReading(false);
     }

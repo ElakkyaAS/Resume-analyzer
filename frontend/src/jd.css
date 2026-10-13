@@ -1,5 +1,13 @@
 /* Styles for the job-description box and saved-note */
 
+.score-summary {
+  font-size: 0.9rem;
+  color: var(--text);
+  opacity: 0.85;
+  margin: 10px 0 0;
+  text-align: left;
+}
+
 .jd-box {
   max-width: 640px;
   margin: 18px auto 0;

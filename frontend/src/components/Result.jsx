@@ -2,7 +2,7 @@ import ScoreRing from './ScoreRing.jsx';
 import SkillChips from './SkillChips.jsx';
 
 export default function Result({ result, onReset }) {
-  const { score, present, missing, total, saved } = result;
+  const { score, present, missing, total, saved, summary, source } = result;
   const note =
     `${present.length} of ${total} skills checked ` +
     (score >= 75 ? '— strong match 💪' : score >= 45 ? '— decent, room to grow' : '— lots of gaps to fill');
@@ -15,6 +15,7 @@ export default function Result({ result, onReset }) {
             <ScoreRing score={score} />
             <p className="score-label">Resume score</p>
             <p className="score-note">{note}</p>
+            {summary && <p className="score-summary">{summary}</p>}
           </div>
 
           <div className="skills-card">
@@ -32,6 +33,7 @@ export default function Result({ result, onReset }) {
             />
             <p className="saved-note">
               {saved ? '✓ Saved to MongoDB' : '⚠ Not saved — MongoDB not reachable'}
+              {source === 'labd' ? ' · scored by labd' : ''}
             </p>
             <button className="btn ghost" onClick={onReset}>↺ Analyze another resume</button>
           </div>

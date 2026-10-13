@@ -13,6 +13,10 @@ app.get('/api/health', (req, res) => res.json({ ok: true }));
 app.use('/api/analyze', analyzeRouter);
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`API listening on http://localhost:${PORT}`));
+// Vercel imports this file and manages the listening socket itself, so only
+// bind a port when the file is run directly (locally, or via `vercel dev`).
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => console.log(`API listening on http://localhost:${PORT}`));
+}
 
 connectDB();
