@@ -12,6 +12,10 @@ app.get('/api/health', (req, res) => res.json({ ok: true }));
 
 app.use('/api/analyze', analyzeRouter);
 
+// Vercel runs this file as a function: it imports the module and uses this
+// default export as the request handler. Locally we still bind a port below.
+export default app;
+
 const PORT = process.env.PORT || 5000;
 // Vercel imports this file and manages the listening socket itself, so only
 // bind a port when the file is run directly (locally, or via `vercel dev`).
